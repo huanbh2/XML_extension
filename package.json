@@ -1,0 +1,92 @@
+{
+  "name": "xml-visual-preview",
+  "displayName": "XML Visual Preview & UI Dashboard",
+  "description": "Visual UI cards, structured dashboard, and interactive tree viewer for XML files. Hides raw tags, formats data into cards, badges & tables with real-time search.",
+  "version": "1.0.0",
+  "publisher": "anhhuanvg002",
+  "author": {
+    "name": "Huan Bui",
+    "email": "anhhuanvg002@hotmail.com"
+  },
+  "license": "MIT",
+  "icon": "resources/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e24",
+    "theme": "dark"
+  },
+  "keywords": [
+    "xml",
+    "preview",
+    "viewer",
+    "dashboard",
+    "tree",
+    "visualizer",
+    "jira",
+    "ui"
+  ],
+  "categories": [
+    "Visualization",
+    "Formatters",
+    "Other"
+  ],
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "activationEvents": [
+    "onLanguage:xml",
+    "onCommand:xmlVisualPreview.open",
+    "onCommand:prettyXmlPreview.open"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "xmlVisualPreview.open",
+        "title": "XML Visual Preview: Open UI Dashboard",
+        "icon": "$(open-preview)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "when": "resourceExtname == .xml || resourceExtname == .dtd",
+          "command": "xmlVisualPreview.open",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "when": "resourceExtname == .xml || resourceExtname == .dtd",
+          "command": "xmlVisualPreview.open",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "when": "resourceExtname == .xml || resourceExtname == .dtd",
+          "command": "xmlVisualPreview.open",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "xmlVisualPreview.open",
+        "key": "ctrl+shift+v",
+        "when": "editorTextFocus && (resourceExtname == .xml || resourceExtname == .dtd)"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "dependencies": {
+    "highlight.js": "^11.10.0",
+    "xml-formatter": "^3.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/vinfast/vf-ontology"
+  }
+}
